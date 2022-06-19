@@ -31,4 +31,4 @@ jobs:
 
       - name: docker push
         run: |
-          docker-push IMG=ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.tags }}
+          make docker-push IMG=ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.tags }}
