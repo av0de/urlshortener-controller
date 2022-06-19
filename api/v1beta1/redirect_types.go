@@ -1,5 +1,5 @@
 /*
-Copyright 2022.
+Copyright 2022 Cedric Kienzler.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,22 +14,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1
+package v1beta1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+type HttpRedirect struct {
+	Code int
+}
 
 // RedirectSpec defines the desired state of Redirect
 type RedirectSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Redirect. Edit redirect_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Source is the source URL from which the redirection happens
+	Source string `json:"source,omitempty"`
+
+	// Target is the destination URL to which the redirection happen
+	Target string `json:"target,omitempty"`
+
+	// HttpRedirect specifies a redirection with a http 3xx response code. Currently, only HttpRedirect is supported
+	HttpRedirect *int `json:"http_redirect,omitempty"`
 }
 
 // RedirectStatus defines the observed state of Redirect

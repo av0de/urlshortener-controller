@@ -24,7 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	urlredirectorv1 "github.com/av0de/urlshortener-controller/api/v1"
+	urlredirectorv1beta1 "github.com/av0de/urlshortener-controller/api/v1beta1"
 )
 
 // RedirectReconciler reconciles a Redirect object
@@ -57,6 +57,6 @@ func (r *RedirectReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 // SetupWithManager sets up the controller with the Manager.
 func (r *RedirectReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&urlredirectorv1.Redirect{}).
+		For(&urlredirectorv1beta1.Redirect{}).
 		Complete(r)
 }

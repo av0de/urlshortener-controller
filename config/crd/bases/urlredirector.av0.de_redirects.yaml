@@ -15,7 +15,7 @@ spec:
     singular: redirect
   scope: Namespaced
   versions:
-  - name: v1
+  - name: v1beta1
     schema:
       openAPIV3Schema:
         description: Redirect is the Schema for the redirects API
@@ -35,9 +35,16 @@ spec:
           spec:
             description: RedirectSpec defines the desired state of Redirect
             properties:
-              foo:
-                description: Foo is an example field of Redirect. Edit redirect_types.go
-                  to remove/update
+              http_redirect:
+                description: HttpRedirect specifies a redirection with a http 3xx
+                  response code. Currently, only HttpRedirect is supported
+                type: integer
+              source:
+                description: Source is the source URL from which the redirection happens
+                type: string
+              target:
+                description: Target is the destination URL to which the redirection
+                  happen
                 type: string
             type: object
           status:
