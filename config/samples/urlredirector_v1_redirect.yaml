@@ -1,0 +1,6 @@
+apiVersion: urlredirector.av0.de/v1
+kind: Redirect
+metadata:
+  name: redirect-sample
+spec:
+  # TODO(user): Add fields here

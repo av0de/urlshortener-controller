@@ -1,0 +1,33 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - urlredirector.av0.de
+  resources:
+  - redirects
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - urlredirector.av0.de
+  resources:
+  - redirects/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - urlredirector.av0.de
+  resources:
+  - redirects/status
+  verbs:
+  - get
+  - patch
+  - update

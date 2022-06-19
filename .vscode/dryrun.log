@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/workspaces/urlshortener-controller'
+ 
+mkdir -p /workspaces/urlshortener-controller/bin
+GOBIN=/workspaces/urlshortener-controller/bin go install sigs.k8s.io/controller-tools/cmd/controller-gen@v0.9.0
+/workspaces/urlshortener-controller/bin/controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
+go fmt ./...
+go vet ./...
+go build -o bin/manager main.go
+make: Leaving directory '/workspaces/urlshortener-controller'
+ 

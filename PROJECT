@@ -1,0 +1,16 @@
+domain: av0.de
+layout:
+- go.kubebuilder.io/v3
+projectName: urlshortener-controller
+repo: github.com/av0de/urlshortener-controller
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: av0.de
+  group: urlredirector
+  kind: Redirect
+  path: github.com/av0de/urlshortener-controller/api/v1
+  version: v1
+version: "3"
