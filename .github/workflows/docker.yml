@@ -2,7 +2,12 @@ name: Docker Build
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build_and_publish_docker_images:
@@ -25,9 +30,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
 
-      - name: make test
-        run: |
-          make docker-build
+      # - name: make test
+      #   run: |
+      #     make docker-build
 
       - name: Build and Push
         uses: docker/build-push-action@v2
