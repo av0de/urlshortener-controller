@@ -25,6 +25,10 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
 
-      - name: Build and Push
+      - name: docker build
         run: |
-          make docker-build docker-push deploy IMG=ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.tags }}
+          make docker-build
+
+      - name: docker push
+        run: |
+          docker-push IMG=ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.tags }}
