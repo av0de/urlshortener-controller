@@ -1,5 +1,5 @@
 /*
-Copyright 2022 Cedric Kienzler.
+Copyright 2022.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,15 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1beta1
+package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
-
-type HttpRedirect struct {
-	Code int
-}
 
 // RedirectSpec defines the desired state of Redirect
 type RedirectSpec struct {
@@ -34,9 +30,6 @@ type RedirectSpec struct {
 
 	// Target is the destination URL to which the redirection happen
 	Target string `json:"target,omitempty"`
-
-	// HttpRedirect specifies a redirection with a http 3xx response code. Currently, only HttpRedirect is supported
-	HttpRedirect *int `json:"http_redirect,omitempty"`
 }
 
 // RedirectStatus defines the observed state of Redirect

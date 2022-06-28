@@ -1,20 +1,19 @@
 domain: av0.de
 layout:
 - go.kubebuilder.io/v3
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
 projectName: urlshortener-controller
 repo: github.com/av0de/urlshortener-controller
 resources:
 - api:
-    crdVersion: v1beta1
+    crdVersion: v1
     namespaced: true
   controller: true
   domain: av0.de
-  group: urlredirector
+  group: urlshortener
   kind: Redirect
-  path: github.com/av0de/urlshortener-controller/api/v1beta1
-  version: v1beta1
-  webhooks:
-    defaulting: true
-    validation: true
-    webhookVersion: v1
+  path: github.com/av0de/urlshortener-controller/api/v1alpha1
+  version: v1alpha1
 version: "3"

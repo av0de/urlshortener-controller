@@ -1,0 +1,7 @@
+apiVersion: urlshortener.av0.de/v1alpha1
+kind: Redirect
+metadata:
+  name: redirect-sample
+spec:
+  source: test.av0.de
+  target: test.cedi.dev

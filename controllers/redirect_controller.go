@@ -19,23 +19,26 @@ package controllers
 import (
 	"context"
 
+	"github.com/go-logr/logr"
+	networkingv1 "k8s.io/api/networking/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	urlredirectorv1beta1 "github.com/av0de/urlshortener-controller/api/v1beta1"
+	urlshortenerv1alpha1 "github.com/av0de/urlshortener-controller/api/v1alpha1"
 )
 
 // RedirectReconciler reconciles a Redirect object
 type RedirectReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
+	Log    logr.Logger
 }
 
-//+kubebuilder:rbac:groups=urlredirector.av0.de,resources=redirects,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=urlredirector.av0.de,resources=redirects/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=urlredirector.av0.de,resources=redirects/finalizers,verbs=update
+//+kubebuilder:rbac:groups=urlshortener.av0.de,resources=redirects,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=urlshortener.av0.de,resources=redirects/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=urlshortener.av0.de,resources=redirects/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -45,11 +48,13 @@ type RedirectReconciler struct {
 // the user.
 //
 // For more details, check Reconcile and its Result here:
-// - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.11.2/pkg/reconcile
+// - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.12.1/pkg/reconcile
 func (r *RedirectReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
+	log := r.Log.WithValues("redirect", req.NamespacedName)
 
 	// TODO(user): your logic here
+	log.Info("Inside reconcile loop")
 
 	return ctrl.Result{}, nil
 }
@@ -57,6 +62,7 @@ func (r *RedirectReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 // SetupWithManager sets up the controller with the Manager.
 func (r *RedirectReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&urlredirectorv1beta1.Redirect{}).
+		For(&urlshortenerv1alpha1.Redirect{}).
+		Owns(&networkingv1.Ingress{}).
 		Complete(r)
 }

@@ -4,17 +4,19 @@ kind: ClusterRole
 metadata:
   name: redirect-viewer-role
 rules:
-- apiGroups:
-  - urlredirector.av0.de
-  resources:
-  - redirects
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - urlredirector.av0.de
-  resources:
-  - redirects/status
-  verbs:
-  - get
+  - apiGroups:
+      - urlshortener.av0.de
+      - networking.k8s.io
+    resources:
+      - redirects
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - urlshortener.av0.de
+    resources:
+      - redirects/status
+    verbs:
+      - get

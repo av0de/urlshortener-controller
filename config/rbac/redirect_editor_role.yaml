@@ -4,21 +4,23 @@ kind: ClusterRole
 metadata:
   name: redirect-editor-role
 rules:
-- apiGroups:
-  - urlredirector.av0.de
-  resources:
-  - redirects
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - urlredirector.av0.de
-  resources:
-  - redirects/status
-  verbs:
-  - get
+  - apiGroups:
+      - urlshortener.av0.de
+      - networking.k8s.io
+    resources:
+      - redirects
+      - ingresses
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - urlshortener.av0.de
+    resources:
+      - redirects/status
+    verbs:
+      - get

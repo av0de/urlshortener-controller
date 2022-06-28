@@ -6,7 +6,7 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - urlredirector.av0.de
+  - urlshortener.av0.de
   resources:
   - redirects
   verbs:
@@ -18,13 +18,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - urlredirector.av0.de
+  - urlshortener.av0.de
   resources:
   - redirects/finalizers
   verbs:
   - update
 - apiGroups:
-  - urlredirector.av0.de
+  - urlshortener.av0.de
   resources:
   - redirects/status
   verbs:
