@@ -30,12 +30,15 @@ type RedirectSpec struct {
 
 	// Target is the destination URL to which the redirection happen
 	Target string `json:"target,omitempty"`
+
+	// Code is the URL Code used for the redirection. Default 308
+	Code int `json:"code,omitempty"`
 }
 
 // RedirectStatus defines the observed state of Redirect
 type RedirectStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	Target      string   `json:"target,omitempty"`
+	IngressName []string `json:"ingressNames,omitempty"`
 }
 
 //+kubebuilder:object:root=true

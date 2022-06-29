@@ -3,5 +3,6 @@ kind: Redirect
 metadata:
   name: redirect-sample
 spec:
-  source: test.av0.de
-  target: test.cedi.dev
+  source: redirect.av0.de
+  target: test.cedi.dev/foo
+  code: 302

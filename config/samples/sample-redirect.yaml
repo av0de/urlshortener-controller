@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/permanent-redirect: https://test.cedi.dev
+    nginx.ingress.kubernetes.io/permanent-redirect-code: "308"
+  labels:
+  name: redirect-ingress
+spec:
+  rules:
+    - host: redirect.cedi.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: http-svc
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

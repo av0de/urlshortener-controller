@@ -35,6 +35,10 @@ spec:
           spec:
             description: RedirectSpec defines the desired state of Redirect
             properties:
+              code:
+                description: Code is the URL Code used for the redirection. Default
+                  308
+                type: integer
               source:
                 description: Source is the source URL from which the redirection happens
                 type: string
@@ -45,6 +49,13 @@ spec:
             type: object
           status:
             description: RedirectStatus defines the observed state of Redirect
+            properties:
+              ingressNames:
+                items:
+                  type: string
+                type: array
+              target:
+                type: string
             type: object
         type: object
     served: true
