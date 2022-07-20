@@ -57,6 +57,8 @@
 			"source.organizeImports": true,
 			"source.fixAll": true
 		},
+		"editor.bracketPairColorization.enabled": true,
+		"editor.guides.bracketPairs": true,
 		"workbench.iconTheme": "vscode-icons",
 		"terminal.integrated.defaultProfile.linux": "zsh",
 		"terminal.integrated.fontFamily": "MesloLGS NF",
