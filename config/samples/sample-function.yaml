@@ -1,0 +1,12 @@
+apiVersion: openfaas.com/v1
+kind: Function
+metadata:
+  name: shortlink-sample
+spec:
+  environment:
+    Alias: foobar
+    Target: https://openfaas.cedi.dev/function/cows
+  handler: ls
+  image: ghcr.io/openfaas/alpine:latest
+  name: shortlink-sample
+  readOnlyRootFilesystem: true

@@ -33,6 +33,7 @@ import (
 
 	urlshortenerv1alpha1 "github.com/av0de/urlshortener-controller/api/v1alpha1"
 	"github.com/av0de/urlshortener-controller/controllers"
+	openfaasv1 "github.com/openfaas/faas-netes/pkg/apis/openfaas/v1"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -45,6 +46,7 @@ func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
 	utilruntime.Must(urlshortenerv1alpha1.AddToScheme(scheme))
+	utilruntime.Must(openfaasv1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -84,6 +86,14 @@ func main() {
 		Log:    ctrl.Log.WithName("controllers").WithName("Redirect"),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "Redirect")
+		os.Exit(1)
+	}
+	if err = (&controllers.ShortLinkReconciler{
+		Client: mgr.GetClient(),
+		Scheme: mgr.GetScheme(),
+		Log:    ctrl.Log.WithName("controllers").WithName("Redirect"),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "ShortLink")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder

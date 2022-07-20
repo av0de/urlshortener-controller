@@ -31,3 +31,29 @@ rules:
   - get
   - patch
   - update
+- apiGroups:
+  - urlshortener.av0.de
+  resources:
+  - shortlinks
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - urlshortener.av0.de
+  resources:
+  - shortlinks/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - urlshortener.av0.de
+  resources:
+  - shortlinks/status
+  verbs:
+  - get
+  - patch
+  - update

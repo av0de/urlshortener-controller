@@ -80,8 +80,47 @@ patchesJson6902:
       name: manager-role
     patch: |-
       - op: add
-        path: /rules/0/resources/-
-        value: ingresses
+        path: "/rules/-"
+        value:
+          apiGroups:
+          - networking.k8s.io
+          resources:
+          - ingresses
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
       - op: add
-        path: /rules/0/apiGroups/-
-        value: networking.k8s.io
+        path: "/rules/-"
+        value:
+          apiGroups:
+          - openfaas.com
+          resources:
+          - functions
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+      - op: add
+        path: "/rules/-"
+        value:
+          apiGroups:
+          - apps
+          resources:
+          - statefulsets
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
