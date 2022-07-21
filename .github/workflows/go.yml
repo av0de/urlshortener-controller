@@ -2,9 +2,12 @@ name: Go
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - "*"
+    tags:
+      - "v*"
+  pull_request: {}
+  workflow_dispatch: {}
 
 jobs:
   build:
