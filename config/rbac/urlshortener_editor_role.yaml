@@ -1,0 +1,24 @@
+# permissions for end users to edit urlshorteners.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: urlshortener-editor-role
+rules:
+- apiGroups:
+  - urlshortener.av0.de
+  resources:
+  - urlshorteners
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - urlshortener.av0.de
+  resources:
+  - urlshorteners/status
+  verbs:
+  - get

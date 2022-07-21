@@ -5,20 +5,20 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
-  name: shortlinks.urlshortener.av0.de
+  name: urlshorteners.urlshortener.av0.de
 spec:
   group: urlshortener.av0.de
   names:
-    kind: ShortLink
-    listKind: ShortLinkList
-    plural: shortlinks
-    singular: shortlink
+    kind: UrlShortener
+    listKind: UrlShortenerList
+    plural: urlshorteners
+    singular: urlshortener
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: ShortLink is the Schema for the shortlinks API
+        description: UrlShortener is the Schema for the urlshorteners API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -33,23 +33,15 @@ spec:
           metadata:
             type: object
           spec:
-            description: ShortLinkSpec defines the desired state of ShortLink
+            description: UrlShortenerSpec defines the desired state of UrlShortener
             properties:
-              alias:
-                description: Alias is the short name (vanity name) of the shortening.
-                  If omitted, a random alias will be choosen
-                type: string
-              target:
-                description: Target specifies the target to which we will redirect
+              foo:
+                description: Foo is an example field of UrlShortener. Edit urlshortener_types.go
+                  to remove/update
                 type: string
             type: object
           status:
-            description: ShortLinkStatus defines the observed state of ShortLink
-            properties:
-              count:
-                description: Count represents the amount of time, this ShortLink has
-                  been called
-                type: integer
+            description: UrlShortenerStatus defines the observed state of UrlShortener
             type: object
         type: object
     served: true

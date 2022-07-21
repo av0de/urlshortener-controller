@@ -1,5 +1,5 @@
 /*
-Copyright 2022.
+Copyright 2022 Cedric Kienzler.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,42 +23,42 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// ShortLinkSpec defines the desired state of ShortLink
-type ShortLinkSpec struct {
-	// Alias is the short name (vanity name) of the shortening. If omitted, a random alias will be choosen
-	Alias string `json:"alias,omitempty"`
+// UrlShortenerSpec defines the desired state of UrlShortener
+type UrlShortenerSpec struct {
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
 
-	// Target specifies the target to which we will redirect
-	Target string `json:"target,omitempty"`
+	// Foo is an example field of UrlShortener. Edit urlshortener_types.go to remove/update
+	Foo string `json:"foo,omitempty"`
 }
 
-// ShortLinkStatus defines the observed state of ShortLink
-type ShortLinkStatus struct {
-	// Count represents the amount of time, this ShortLink has been called
-	Count int `json:"count,omitempty"`
+// UrlShortenerStatus defines the observed state of UrlShortener
+type UrlShortenerStatus struct {
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// ShortLink is the Schema for the shortlinks API
-type ShortLink struct {
+// UrlShortener is the Schema for the urlshorteners API
+type UrlShortener struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   ShortLinkSpec   `json:"spec,omitempty"`
-	Status ShortLinkStatus `json:"status,omitempty"`
+	Spec   UrlShortenerSpec   `json:"spec,omitempty"`
+	Status UrlShortenerStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// ShortLinkList contains a list of ShortLink
-type ShortLinkList struct {
+// UrlShortenerList contains a list of UrlShortener
+type UrlShortenerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []ShortLink `json:"items"`
+	Items           []UrlShortener `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&ShortLink{}, &ShortLinkList{})
+	SchemeBuilder.Register(&UrlShortener{}, &UrlShortenerList{})
 }

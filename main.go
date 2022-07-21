@@ -31,9 +31,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
+	openfaasv1 "github.com/openfaas/faas-netes/pkg/apis/openfaas/v1"
+
 	urlshortenerv1alpha1 "github.com/av0de/urlshortener-controller/api/v1alpha1"
 	"github.com/av0de/urlshortener-controller/controllers"
-	openfaasv1 "github.com/openfaas/faas-netes/pkg/apis/openfaas/v1"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -88,12 +89,11 @@ func main() {
 		setupLog.Error(err, "unable to create controller", "controller", "Redirect")
 		os.Exit(1)
 	}
-	if err = (&controllers.ShortLinkReconciler{
+	if err = (&controllers.UrlShortenerReconciler{
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
-		Log:    ctrl.Log.WithName("controllers").WithName("Redirect"),
 	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "ShortLink")
+		setupLog.Error(err, "unable to create controller", "controller", "UrlShortener")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder
